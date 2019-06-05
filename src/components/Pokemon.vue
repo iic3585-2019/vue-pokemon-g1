@@ -25,6 +25,7 @@ export default {
 <style scoped lang="scss">
   #container {
     width: 15%;
+    min-width: 120px;
     margin: 0 5%;
   }
 </style>
