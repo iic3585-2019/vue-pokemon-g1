@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     load: function () {
-      store.commit('loadPokemons');
+      store.dispatch('loadPokemons');
     }
   }
 };
