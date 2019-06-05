@@ -35,11 +35,14 @@ const actions = {
       const attacking = state.attacking;
       const pokemon = state.pokemons[attacking];
       const attack = pokemon.moves[randomNumber(2)];
+      const miss = randomNumber(100) >= attack.accuracy;
 
-      commit('attackMessage', { attack });
+      commit('attackMessage', { attack, miss });
       await sleep(1000);
-      commit('decrementHP', { attack });
-      await sleep(1000);
+      if (!miss) {
+        commit('decrementHP', { attack });
+        await sleep(1000);
+      }
       commit('removeAttackMessage');
       await sleep(1000);
 
@@ -63,9 +66,10 @@ const mutations = {
     state.attacking = changeIndex(state.attacking);
     state.defending = changeIndex(state.defending);
   },
-  attackMessage (state, { attack }) {
+  attackMessage (state, { attack, miss }) {
     const attacking = state.attacking;
-    state.pokemons[attacking].message = `Move ${attack.name}, damage ${attack.power}`;
+    const missMessage = miss ? '\n...But missed!' : '';
+    state.pokemons[attacking].message = `Move ${attack.name}, damage ${attack.power}${missMessage}`;
   },
   decrementHP (state, { attack }) {
     const pokemon = state.pokemons[state.defending];
