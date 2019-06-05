@@ -1,19 +1,23 @@
 <template>
   <div id="app">
     <img id="logo" alt="Pokemon logo" src="./assets/pokemon_logo.png">
+    <h1>Bets</h1>
     <Pokemons />
     <md-progress-spinner v-if="loading" md-mode="indeterminate"></md-progress-spinner>
+    <Bet />
   </div>
 </template>
 
 <script>
-import Pokemons from './components/Pokemons.vue';
+import Pokemons from './components/Pokemons';
+import Bet from './components/Bet';
 import store from './store';
 
 export default {
   name: 'app',
   components: {
-    Pokemons
+    Pokemons,
+    Bet
   },
   computed: {
     loading: function () {

@@ -360,3 +360,5 @@ const typeAdvantages = {
         fairy: 1
     }
 }
+
+export default typeAdvantages;

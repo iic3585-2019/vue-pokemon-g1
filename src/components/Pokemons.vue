@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>Batalla</h1>
+  <div>
+    <h2>Batalla</h2>
     <div class="md-layout md-gutter" v-if="firstPokemon && secondPokemon">
       <div class="md-layout-item">
         <pokemon v-bind:pokemon="firstPokemon"/>
@@ -38,18 +38,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
