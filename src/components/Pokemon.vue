@@ -8,8 +8,8 @@
     <md-card-media md-big>
       <img v-bind:src="pokemon.sprites.front_default" v-bind:alt="pokemon.name"/>
     </md-card-media>
-    <p>{{pokemon.message}}</p>
-    <p>HP: {{pokemon.hp}}</p>
+    {{pokemon.message}} <br/>
+    HP: {{pokemon.hp}}
   </md-card>
 </template>
 
@@ -24,6 +24,7 @@ export default {
 
 <style scoped lang="scss">
   #container {
-    max-width: 40%;
+    width: 15%;
+    margin: 0 5%;
   }
 </style>
