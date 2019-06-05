@@ -11,7 +11,7 @@ export default new Vuex.Store({
       ...pokemon,
       namespaced: true
     },
-    bets : {
+    bets: {
       ...bets,
       namespaced: true
     }

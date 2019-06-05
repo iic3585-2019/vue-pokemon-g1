@@ -56,7 +56,7 @@ const mutations = {
     state.pokemons = [
       { ...pokemon1, message: '', hp: getHP(pokemon1) },
       { ...pokemon2, message: '', hp: getHP(pokemon2) }
-    ],
+    ];
     state.battleCompleted = false;
   },
   nextTurn (state) {
