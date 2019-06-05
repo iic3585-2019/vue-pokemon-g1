@@ -32,8 +32,8 @@ const mutations = {
         info: pokemon2
       };
     },
-    loading: (state) => (state.loading = true),
-    loaded: (state) => (state.loading = false)
+    loading: state => (state.loading = true),
+    loaded: state => (state.loading = false)
 };
 
 export default {
