@@ -1,14 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ player1.pokemons.length }}</h1>
+    <div v-for="pokemon in player1.pokemons" v-bind:key="pokemon.name">
+      <h3>{{ pokemon.name }}</h3>
+    </div>
+    <md-button v-on:click="load">Cargar</md-button>
   </div>
 </template>
 
 <script>
+import store from '../store';
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  computed: {
+    player1: function () {
+      return store.state.player1;
+    }
+  },
+  methods: {
+    load: function () {
+      console.log('loading');
+      store.commit('loadPokemons');
+    }
   }
 };
 </script>
