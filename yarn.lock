@@ -1140,6 +1140,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
+Math@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/Math/-/Math-0.0.1-security.tgz#04ddfc526214f3866614eb70d9e5889e70d0f419"
+  integrity sha1-BN38UmIU84ZmFOtw2eWInnDQ9Bk=
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img id="logo" alt="Pokemon logo" src="./assets/pokemon_logo.png">
-    <h1>Bets</h1>
+    <h1>Apuestas</h1>
     <Pokemons />
     <md-progress-spinner v-if="loading" md-mode="indeterminate"></md-progress-spinner>
     <Bet />

@@ -7,12 +7,14 @@ const state = {
   pokemons: [],
   attacking: 0,
   defending: 1,
-  loading: false
+  loading: false,
+  battleCompleted: false
 };
 
 const getters = {
   firstPokemon: state => state.pokemons[0],
-  secondPokemon: state => state.pokemons[1]
+  secondPokemon: state => state.pokemons[1],
+  completion: state => state.battleCompleted
 };
 
 const actions = {
@@ -27,23 +29,25 @@ const actions = {
     commit('setPokemons', { pokemon1, pokemon2 });
     commit('loaded');
   },
-  async fight (context) {
-    let wins = winner(context.state.pokemons);
+  async fight ({ commit, state, dispatch }) {
+    let wins = winner(state.pokemons);
     while (wins === null) {
-      const attacking = context.state.attacking;
-      const pokemon = context.state.pokemons[attacking];
+      const attacking = state.attacking;
+      const pokemon = state.pokemons[attacking];
       const attack = pokemon.moves[randomNumber(2)];
 
-      context.commit('attackMessage', { attack });
+      commit('attackMessage', { attack });
       await sleep(1000);
-      context.commit('decrementHP', { attack });
+      commit('decrementHP', { attack });
       await sleep(1000);
-      context.commit('removeAttackMessage');
+      commit('removeAttackMessage');
       await sleep(1000);
 
-      wins = winner(context.state.pokemons);
-      context.commit('nextTurn');
+      wins = winner(state.pokemons);
+      commit('nextTurn');
     }
+    commit('completeBattle');
+    dispatch('bets/resolveBet', state.pokemons.indexOf(wins), { root: true });
   }
 };
 
@@ -52,7 +56,8 @@ const mutations = {
     state.pokemons = [
       { ...pokemon1, message: '', hp: getHP(pokemon1) },
       { ...pokemon2, message: '', hp: getHP(pokemon2) }
-    ];
+    ],
+    state.battleCompleted = false;
   },
   nextTurn (state) {
     state.attacking = changeIndex(state.attacking);
@@ -71,7 +76,8 @@ const mutations = {
     state.pokemons[state.attacking].message = '';
   },
   loading: (state) => (state.loading = true),
-  loaded: (state) => (state.loading = false)
+  loaded: (state) => (state.loading = false),
+  completeBattle: state => (state.battleCompleted = true)
 };
 
 export default {

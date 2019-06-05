@@ -7,7 +7,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    pokemon,
-    bets
+    pokemon: {
+      ...pokemon,
+      namespaced: true
+    },
+    bets : {
+      ...bets,
+      namespaced: true
+    }
   }
 });
