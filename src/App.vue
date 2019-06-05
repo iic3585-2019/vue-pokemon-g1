@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img id="logo" alt="Pokemon logo" src="./assets/pokemon_logo.png">
+    <Pokemons />
     <md-progress-spinner v-if="loading" md-mode="indeterminate"></md-progress-spinner>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Pokemons from './components/Pokemons.vue';
 import store from './store';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Pokemons
   },
   computed: {
     loading: function () {
@@ -31,5 +31,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+img#logo {
+  max-width: 40%;
 }
 </style>

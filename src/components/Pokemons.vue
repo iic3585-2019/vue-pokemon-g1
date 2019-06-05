@@ -1,44 +1,37 @@
 <template>
   <div class="hello">
     <h1>Batalla</h1>
-    <div class="md-layout md-gutter" v-if="pokemon1 && pokemon2">
+    <div class="md-layout md-gutter" v-if="firstPokemon && secondPokemon">
       <div class="md-layout-item">
-        <pokemon v-bind:pokemon="pokemon1"/>
+        <pokemon v-bind:pokemon="firstPokemon"/>
       </div>
       <div class="md-layout-item">
-        <pokemon v-bind:pokemon="pokemon2"/>
+        <pokemon v-bind:pokemon="secondPokemon"/>
       </div>
     </div>
-    <md-button v-on:click="load">
+    <md-button v-on:click="this.loadPokemons">
       Cargar
     </md-button>
   </div>
 </template>
 
 <script>
-import store from '../store';
+import { mapGetters, mapActions } from 'vuex';
 import Pokemon from './Pokemon.vue';
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'Pokemons',
   components: {
     Pokemon
   },
   computed: {
-    pokemon1: function () {
-      return store.state.pokemon1;
-    },
-    pokemon2: function () {
-      return store.state.pokemon2;
-    }
+    ...mapGetters(['firstPokemon', 'secondPokemon'])
   },
   methods: {
-    load: function () {
-      store.dispatch('loadPokemons');
-    }
+    ...mapActions(['loadPokemons'])
+  },
+  created() {
+    this.loadPokemons()
   }
 };
 </script>
