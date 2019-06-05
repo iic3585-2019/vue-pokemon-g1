@@ -1,29 +1,42 @@
 <template>
   <div class="hello">
-    <h1>{{ player1.pokemons.length }}</h1>
-    <div v-for="pokemon in player1.pokemons" v-bind:key="pokemon.name">
-      <h3>{{ pokemon.name }}</h3>
+    <h1>Batalla</h1>
+    <div class="md-layout md-gutter" v-if="pokemon1 && pokemon2">
+      <div class="md-layout-item">
+        <pokemon v-bind:pokemon="pokemon1"/>
+      </div>
+      <div class="md-layout-item">
+        <pokemon v-bind:pokemon="pokemon2"/>
+      </div>
     </div>
-    <md-button v-on:click="load">Cargar</md-button>
+    <md-button v-on:click="load">
+      Cargar
+    </md-button>
   </div>
 </template>
 
 <script>
 import store from '../store';
+import Pokemon from './Pokemon.vue';
 
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
+  components: {
+    Pokemon
+  },
   computed: {
-    player1: function () {
-      return store.state.player1;
+    pokemon1: function () {
+      return store.state.pokemon1;
+    },
+    pokemon2: function () {
+      return store.state.pokemon2;
     }
   },
   methods: {
     load: function () {
-      console.log('loading');
       store.commit('loadPokemons');
     }
   }

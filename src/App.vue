@@ -2,17 +2,23 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <md-progress-spinner md-mode="indeterminate"></md-progress-spinner>
+    <md-progress-spinner v-if="loading" md-mode="indeterminate"></md-progress-spinner>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import store from './store';
 
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  computed: {
+    loading: function () {
+      return store.state.loading;
+    }
   }
 };
 </script>

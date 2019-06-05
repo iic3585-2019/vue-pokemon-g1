@@ -5,22 +5,30 @@ Vue.use(Vuex);
 
 const BASE_URL = 'https://pokeapi.co/api/v2/';
 
+const POKEMONS = ['ditto', 'pikachu', 'squirtle'];
+
+const randomPokemon = () => POKEMONS[Math.floor(Math.random() * POKEMONS.length)]
+
 export default new Vuex.Store({
   state: {
-    player1: {
-      name: 'Thomas',
-      pokemons: []
-    },
-    player2: {
-      name: 'FloV',
-      pokemons: []
-    }
+    pokemon2: null,
+    pokemon1: null,
+    loading: false
   },
   mutations: {
     async loadPokemons (state) {
-      const ditto = await fetch(BASE_URL + 'pokemon/ditto').then(res => res.json());
-      state.player1.pokemons.push(ditto);
-      state.player2.pokemons.push({ ...ditto });
+      console.log('loading');
+      state.loading = true;
+      const pokemon1 = await fetch(BASE_URL + 'pokemon/' + randomPokemon()).then(res => res.json());
+      const pokemon2 = await fetch(BASE_URL + 'pokemon/' + randomPokemon()).then(res => res.json());
+      state.pokemon1 = {
+        info: pokemon1
+      };
+      state.pokemon2 = {
+        info: pokemon2
+      };
+      state.loading = false;
+      console.log('loaded');
     }
   },
   actions: {
