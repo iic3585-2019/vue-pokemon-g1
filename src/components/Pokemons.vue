@@ -12,6 +12,9 @@
     <md-button v-on:click="this.loadPokemons">
       Cargar
     </md-button>
+    <md-button v-on:click="this.fight">
+      Pelea!
+    </md-button>
   </div>
 </template>
 
@@ -28,7 +31,7 @@ export default {
     ...mapGetters(['firstPokemon', 'secondPokemon'])
   },
   methods: {
-    ...mapActions(['loadPokemons'])
+    ...mapActions(['loadPokemons', 'fight'])
   },
   created() {
     this.loadPokemons()
