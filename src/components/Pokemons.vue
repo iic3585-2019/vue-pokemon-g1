@@ -2,14 +2,10 @@
   <div>
     <h2>Contrincantes</h2>
     <div id="container">
-      <div class="md-layout md-gutter" v-if="firstPokemon && secondPokemon">
-        <div class="md-layout-item">
+        <div class="pokemon-container" v-if="firstPokemon && secondPokemon">
           <pokemon v-bind:pokemon="firstPokemon"/>
-        </div>
-        <div class="md-layout-item">
           <pokemon v-bind:pokemon="secondPokemon"/>
         </div>
-      </div>
     </div>
     <md-button v-on:click="this.loadPokemons" v-if="completion">
       Nueva pelea!
@@ -42,18 +38,10 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  // .md-layout {
-  //   max-width: 100%;
-  // }
 
-  // .md-layout-item {
-  //   flex: 1 1 0;
-  // }
-
-  // #container {
-  //   display: flex;
-  //   justify-content: center;
-  // }
+  .pokemon-container {
+    display: flex;
+    justify-content: center;
+  }
 </style>

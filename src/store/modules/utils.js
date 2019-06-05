@@ -10,6 +10,7 @@ export const getMoves = async (pokemon) => {
     const move = randomMove(pokemon.moves);
     const fullMove = await fetch(move.url).then(res => res.json());
     if (fullMove.power) {
+      fullMove.power = fullMove.power > 20 ? Math.floor(fullMove.power / 2.5) : fullMove.power;
       moves.push(fullMove);
     }
   }
