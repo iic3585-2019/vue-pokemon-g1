@@ -38,15 +38,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  // .md-layout {
-  //   max-width: 100%;
-  // }
-
-  // .md-layout-item {
-  //   flex: 1 1 0;
-  // }
 
   .pokemon-container {
     display: flex;

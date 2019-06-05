@@ -26,6 +26,6 @@ export default {
   #container {
     width: 15%;
     min-width: 120px;
-    margin: 0 5%;
+    margin: 0 5% 15px 5%;
   }
 </style>
