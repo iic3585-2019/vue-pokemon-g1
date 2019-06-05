@@ -10,7 +10,7 @@
             </md-field>
             <md-field class="bet-field">
                 <label>¿Cuánto quieres apostar?</label>
-                <md-input v-model="bet" type="number"/>
+                <md-input v-model="bet" type="number" min=0 :max="this.netBalance"/>
             </md-field>
         </div>
         <md-card id="balance">
